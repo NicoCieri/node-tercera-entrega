@@ -40,7 +40,7 @@ Para correr el proyecto es necesario crear el archivo `.env` y setear las creden
 ### Cart
 
 - `GET /api/carts`: Retorna todos los carts.
-- `GET /api/carts/:id`: Retorna el cart por id.
+- `GET /api/carts/:id`: Retorna el cart por id.e
 - `POST /api/carts`: Crea un cart nuevo.
 - `POST /api/carts/product/:productId`: Agrega un producto al cart. Si ya existe, aumenta su cantidad en uno. Valida que tanto el cart como el product existan.
 - `DELETE /api/:id/product/:productId`: Elimina el producto seleccionado.
