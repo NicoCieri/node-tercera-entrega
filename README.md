@@ -1,4 +1,4 @@
-# Entrega Práctica Integradora clase 27
+# Tercera Pre Entrega Trabajo Final
 
 Para correr el proyecto es necesario crear el archivo `.env` y setear las credenciales de Mongo Atlas `DB_USER` y `DB_PASSWORD`. También setear `PRIVATE_KEY` con `"1234"`.
 
