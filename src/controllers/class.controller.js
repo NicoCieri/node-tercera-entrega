@@ -5,16 +5,16 @@ export default class Controllers {
     this.service = service;
   }
 
-  async getAll(req, res, next) {
+  getAll = async (req, res, next) => {
     try {
       const items = await this.service.getAll();
       createResponse(res, 200, items);
     } catch (error) {
       next(error.message);
     }
-  }
+  };
 
-  async getById(req, res, next) {
+  getById = async (req, res, next) => {
     try {
       const { id } = req.params;
       const items = await this.service.getById(id);
@@ -27,9 +27,9 @@ export default class Controllers {
     } catch (error) {
       next(error.message);
     }
-  }
+  };
 
-  async create(req, res, next) {
+  create = async (req, res, next) => {
     try {
       const newItem = await this.service.create(req.body);
       if (!newItem)
@@ -41,9 +41,9 @@ export default class Controllers {
     } catch (error) {
       next(error.message);
     }
-  }
+  };
 
-  async update(req, res, next) {
+  update = async (req, res, next) => {
     try {
       const { id } = req.params;
       const item = await this.service.getById(id);
@@ -59,9 +59,9 @@ export default class Controllers {
     } catch (error) {
       next(error.message);
     }
-  }
+  };
 
-  async delete(req, res, next) {
+  delete = async (req, res, next) => {
     try {
       const { id } = req.params;
       const item = await this.service.getById(id);
@@ -77,5 +77,5 @@ export default class Controllers {
     } catch (error) {
       next(error.message);
     }
-  }
+  };
 }

@@ -5,12 +5,7 @@ import passport from "passport";
 import cookieParser from "cookie-parser";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { __dirname } from "./utils.js";
-import productRouter from "./routes/product.routes.js";
-import cartRouter from "./routes/cart.routes.js";
-import viewsRouter from "./routes/views.routes.js";
-import userRouter from "./routes/user.routes.js";
-import ticketRouter from "./routes/ticket.routes.js";
-import sessionRouter from "./routes/session.routes.js";
+import routes from "./routes/index.js";
 import "./passport/jwt-strategy.js";
 
 const app = express();
@@ -30,12 +25,7 @@ app.set("views", __dirname + "/views");
 
 app.use(passport.initialize());
 
-app.use("/api/products", productRouter);
-app.use("/api/carts", cartRouter);
-app.use("/api/sessions", sessionRouter);
-app.use("/api/users", userRouter);
-app.use("/api/tickets", ticketRouter);
-app.use("/", viewsRouter);
+app.use("/", routes);
 
 app.listen(PORT, () => {
   console.log(`Server ok en puerto ${PORT}`);

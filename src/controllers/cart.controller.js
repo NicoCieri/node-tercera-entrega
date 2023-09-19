@@ -2,6 +2,7 @@ import * as service from "../services/cart.services.js";
 import TicketService from "../services/ticket.services.js";
 import { sendEmailWithTemplate } from "../services/email.services.js";
 import { createResponse, formatMoney } from "../utils.js";
+import { successfulPurchaseTemplate } from "../templates/email.templates.js";
 
 const ticketService = new TicketService();
 
@@ -126,17 +127,12 @@ export const purchaseCart = async (req, res, next) => {
     if (!result)
       return createResponse(res, 400, { error: "Error generating ticket" });
 
-    const { ticket } = result;
+    const ticket = await ticketService.getById(result.ticket._id);
 
     await sendEmailWithTemplate({
       email: user.email,
       subject: "New purchase confirmed!",
-      html: `
-        <h1>Thanks for your purchase!</h1>
-        <h2>Here is your ticket:</h2>
-        <p>Code: <b>${ticket.code}</b></p>
-        <p>Total amount: <b>${formatMoney(ticket.amount)}</b></p>        
-      `,
+      html: successfulPurchaseTemplate(ticket),
     });
 
     createResponse(res, 200, ticket);

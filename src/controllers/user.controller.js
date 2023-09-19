@@ -2,6 +2,7 @@ import UserService from "../services/user.services.js";
 import { createResponse } from "../utils.js";
 import Controller from "./class.controller.js";
 import { sendEmailWithTemplate } from "../services/email.services.js";
+import { successfulRegisterTemplate } from "../templates/email.templates.js";
 
 const userService = new UserService();
 export default class UserController extends Controller {
@@ -16,7 +17,7 @@ export default class UserController extends Controller {
       await sendEmailWithTemplate({
         email: newUser.email,
         subject: "Wellcome!",
-        html: `<h1>Wellcome to our store ${newUser.first_name}!</h1>`,
+        html: successfulRegisterTemplate(newUser.first_name),
       });
 
       if (!newUser)
@@ -45,7 +46,7 @@ export default class UserController extends Controller {
       await sendEmailWithTemplate({
         email: newUser.email,
         subject: "Wellcome!",
-        html: `<h1>Wellcome to our store ${newUser.first_name}!</h1>`,
+        html: successfulRegisterTemplate(newUser.first_name),
       });
 
       if (!newUser) res.redirect("/error-register");
