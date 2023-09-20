@@ -1,6 +1,7 @@
 # Tercera Pre Entrega Trabajo Final
 
 Para correr el proyecto es necesario crear el archivo `.env` y setear las credenciales de Mongo Atlas `DB_USER` y `DB_PASSWORD`. También setear `PRIVATE_KEY` con `"1234"`.
+Para poder enviar los emails es necesario setear las variables `EMAIL` y `EMAIL_PASSWORD` con las credenciales de una cuenta de gmail.
 
 ## Comandos
 
