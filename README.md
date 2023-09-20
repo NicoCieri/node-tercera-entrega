@@ -33,9 +33,9 @@ Para correr el proyecto es necesario crear el archivo `.env` y setear las creden
 
 - `GET /api/products`: Retorna todos los productos paginados. Recibe parámetros opcionales: `limit`, `page`, `sort`, `category` y `available`
 - `GET /api/products/:id`: Retorna el producto por id.
-- `POST /api/products`: Crea un producto nuevo. Se debe enviar con archivo de imagen.
-- `PUT /api/products/:id`: Edita el producto. Se debe enviar con archivo de imagen.
-- `DELETE /api/products/:id`: Elimina el producto enviado.
+- `POST /api/products`: Crea un producto nuevo. Se debe enviar con archivo de imagen. Solo el admin puede acceder a este endpoint.
+- `PUT /api/products/:id`: Edita el producto. Se debe enviar con archivo de imagen. Solo el admin puede acceder a este endpoint.
+- `DELETE /api/products/:id`: Elimina el producto enviado. Solo el admin puede acceder a este endpoint.
 
 ### Cart
 
@@ -67,3 +67,9 @@ Para correr el proyecto es necesario crear el archivo `.env` y setear las creden
 ```
 
 - `DELETE "/id"`: Remover el cart seleccionado.
+- `POST "/:id/purchase`: Realiza la compra del cart seleccionado. Compra solo los productos con suficiente stock y los quita del cart. El resto de los productos se quedan en el cart y los retorna en una propiedad `unavailable`. Se envía un mail al usuario con el detalle de la compra.
+
+### Tickets
+
+- `GET /ticket`: Retorna todos los tickets. Solo el admin puede acceder a este endpoint.
+- `GET /ticket/:id`: Retorna el ticket por id. Solo el admin puede acceder a este endpoint.
