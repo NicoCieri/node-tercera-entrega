@@ -8,6 +8,6 @@ const controller = new TicketController();
 const router = Router();
 
 router.get("/", requireAuth, authorize(["admin"]), controller.getAll);
-router.get("/:id", requireAuth, controller.getById);
+router.get("/:id", requireAuth, authorize(["admin"]), controller.getById);
 
 export default router;
